@@ -5,10 +5,10 @@ import Bird from '../../components/Bird/Bird'
 
 export default function Game() {
   
-  const gameHeight = 500
-  const gameWidth = 500
+  let gameHeight = (window.innerHeight - 40)
+  let gameWidth = window.innerWidth
   const gravity = 6
-  
+
   const position = 250
   const birdSize = 20
   const jumpHeight = 100
@@ -45,22 +45,23 @@ useEffect(() => {
  
   return ( 
     <div className="gamePage"
-    onClick={handleClick}
     style={{
       display: 'flex',
       width: '100%',
       justifyContent: 'center',
       color: 'white',
-      fontSize: 24
+      fontSize: 24,
+      backgroundColor: 'blue',
+      backgroundSize: '100%'
     }}
     >
-      
     <div id="Gamebox"
+      onClick={handleClick}
       style={{
-        backgroundColor: 'blue',
-        height: '500px',
-        width: '500px',
-        overflow: 'hidden'
+        height: gameHeight,
+        width: gameWidth,
+        overflow: 'hidden',
+        margin: 'auto'
       }}
       >
       <>

@@ -21,7 +21,7 @@ export default function App() {
       {user ? 
       <>
         <NavBar user={user} setUser={setUser}/>
-        <Routes>
+        <Routes> 
           {/* Route components in here */}
           <Route path="/game" element={<Game />} />
           <Route path="" element="" />
