@@ -9,10 +9,10 @@ export default function NavBar({user, setUser}) {
   }
   return (
   <nav>
-    {/* <Link to=""></Link>
+    <Link to="/game">Game</Link>
     &nbsp; | &nbsp;
     <Link to=""></Link>
-    &nbsp; | &nbsp; */}
+    &nbsp; | &nbsp;
     <span>Welcome, {user.name}</span>
     &nbsp; | &nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
   </nav>
