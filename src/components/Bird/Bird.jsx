@@ -5,10 +5,10 @@ export default function Bird({birdPosition}) {
   return (
    <div id="Bird"
    style={{
-      position:'absolute',
+      position:'relative',
+      left: '50%',
       backgroundColor:'red',
       backgroundImage: `url(${mario})`,
-      
       borderRadius:'50%',
       height: '20px',
       width: '20px',

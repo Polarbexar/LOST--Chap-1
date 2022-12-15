@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Bird from '../../components/Bird/Bird'
 // import Obstacles from '../../components/Obstacles/Obstacles'
 
@@ -17,14 +17,16 @@ export default function Game() {
   const gravity = 6
 
   const [birdPosition, setBirdPosition] = useState(position)
-  const [score, setScore] = useState(-2)
+  const [score, setScore] = useState(0)
   const [gameHasStarted, setGameHasStarted] = useState(false)
+  const [time, setTime] = useState(0)
 
   function handleClick() {
     let newBirdPosition = birdPosition - jumpHeight;
     if (!gameHasStarted) {
       setGameHasStarted(true)
       setScore(0)
+      setTime(0)
     }
     if (newBirdPosition < 0) {
       setBirdPosition(0)
@@ -32,6 +34,12 @@ export default function Game() {
     setBirdPosition(newBirdPosition)
   }
 }
+
+useEffect(() => {
+  if (gameHasStarted) {
+
+  }
+})
 
 useEffect(() => {
   let timeId;
@@ -52,6 +60,7 @@ const [obHeight, setObHeight] = useState(200);
 const [obLeft, setObLeft] = useState(gameWidth - obWidth);
 const bottomHeight = gameHeight - obGap - obHeight;
 
+
 useEffect(() => {
   let obId;
   if (gameHasStarted && obLeft >= -obWidth) {
@@ -66,22 +75,55 @@ useEffect(() => {
     setObLeft(gameWidth - obWidth)
     setObHeight(Math.random() * (gameHeight - obGap));
   }
-  setScore(score => score + 1)
 }, [gameHasStarted, obLeft, gameHeight, gameWidth]);
+
+// useRef(() => {
+//   let interval;
+//   if (gameHasStarted) {
+//   interval = setInterval(() => {
+//     setTime(time => time + 1)
+//   }, 1000);
+//   setScore(interval)
+//   console.log(interval)
+// } else if (!gameHasStarted) {
+//   clearInterval(interval);
+// }
+// return () => clearInterval(interval)
+// }, [gameHasStarted, time, setTime])
+
+// const timerRef = useRef();
+// useEffect(function getScore() {
+//   if (gameHasStarted) {
+//   timerRef.current = setInterval(function() {
+//     // Using a "functional update" is better if computing 
+//     // the new state value from the current state value
+//     // https://reactjs.org/docs/hooks-reference.html#functional-updates
+//     setTime((secs) => secs + 1);
+//   }, 1000);
+//   console.log(timerRef.current)
+//   setScore(timerRef.current)
+//   // Return the cleanup component
+// } return function() {
+//     clearInterval(timerRef.current);
+//   };
+//   getScore()
+// }, [gameHasStarted]);
 
 useEffect(() => {
   const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
   const collisionWithBottom = birdPosition <= gameHeight && birdPosition >= gameHeight - bottomHeight;
   if (obLeft >= 0 && 
-      obLeft <= obWidth && 
-      (collisionWithTop || collisionWithBottom)) {
-    setGameHasStarted(false)
-  }
+    obLeft <= obWidth && 
+    (collisionWithTop || collisionWithBottom)) {
+      setGameHasStarted(false)
+    }
 }, [birdPosition, obHeight, bottomHeight, obLeft, gameHeight])
  
   return ( 
     <div className="gamePage"
     style={{
+      // display: 'grid',
+      // gridTemplateColumns: 'repeat(3, 1fr)',
       display: 'flex',
       width: '100%',
       justifyContent: 'center',
@@ -91,7 +133,7 @@ useEffect(() => {
       backgroundSize: '100%'
     }}
     >
-      <h1>{score}</h1>
+    <h1>{score}</h1>
     <div id="Gamebox"
       onClick={handleClick}
       style={{
@@ -102,6 +144,16 @@ useEffect(() => {
       }}
       >
      <>
+     {/* <div id="monster"
+      style={{
+        position: 'relative',
+        top: '50%',
+        height: gameHeight,
+        width: '20px',
+        bottom: 0,
+        backgroundColor: 'red'
+      }}>
+       </div> */}
       <Bird birdPosition={birdPosition} />
       <div id="obstacle-top"
           style={{
