@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Bird from '../../components/Bird/Bird'
-import Obstacles from '../../components/Obstacles/Obstacles'
+// import Obstacles from '../../components/Obstacles/Obstacles'
 
 
 
@@ -24,6 +24,7 @@ export default function Game() {
     let newBirdPosition = birdPosition - jumpHeight;
     if (!gameHasStarted) {
       setGameHasStarted(true)
+      setScore(0)
     }
     if (newBirdPosition < 0) {
       setBirdPosition(0)
@@ -42,7 +43,7 @@ useEffect(() => {
   return () => {
     clearInterval(timeId)
   }
-}, [birdPosition, gameHasStarted])
+}, [birdPosition, gameHasStarted, gameHeight])
   
 ///////////////Obstacle Code
 const obWidth = 40;
@@ -50,8 +51,6 @@ const obGap = 200;
 const [obHeight, setObHeight] = useState(200);
 const [obLeft, setObLeft] = useState(gameWidth - obWidth);
 const bottomHeight = gameHeight - obGap - obHeight;
-
-const obInfo = [obHeight, obGap, obWidth] 
 
 useEffect(() => {
   let obId;
@@ -68,7 +67,7 @@ useEffect(() => {
     setObHeight(Math.random() * (gameHeight - obGap));
   }
   setScore(score => score + 1)
-}, [gameHasStarted, obLeft]);
+}, [gameHasStarted, obLeft, gameHeight, gameWidth]);
 
 useEffect(() => {
   const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
@@ -78,7 +77,7 @@ useEffect(() => {
       (collisionWithTop || collisionWithBottom)) {
     setGameHasStarted(false)
   }
-}, [birdPosition, obHeight, bottomHeight, obLeft])
+}, [birdPosition, obHeight, bottomHeight, obLeft, gameHeight])
  
   return ( 
     <div className="gamePage"
@@ -92,6 +91,7 @@ useEffect(() => {
       backgroundSize: '100%'
     }}
     >
+      <h1>{score}</h1>
     <div id="Gamebox"
       onClick={handleClick}
       style={{
@@ -100,7 +100,7 @@ useEffect(() => {
         overflow: 'hidden',
         margin: 'auto'
       }}
-    >
+      >
      <>
       <Bird birdPosition={birdPosition} />
       <div id="obstacle-top"
@@ -123,13 +123,6 @@ useEffect(() => {
             left: obLeft
           }}>
         </div>
-
-      {/* <Obstacles 
-      obWidth={obWidth} 
-      bottomHeight={bottomHeight}
-      gameHeight={gameHeight}
-      obLeft={obLeft} 
-      obHeight={obHeight} */}
      </>
     </div>
   </div>
