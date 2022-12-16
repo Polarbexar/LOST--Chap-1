@@ -57,7 +57,7 @@ useEffect(() => {
 const obWidth = 40;
 const obGap = 200;
 const [obHeight, setObHeight] = useState(200);
-const [obLeft, setObLeft] = useState(gameWidth - obWidth);
+const [obLeft, setObLeft] = useState(gameWidth - obWidth - 40);
 const bottomHeight = gameHeight - obGap - obHeight;
 
 
@@ -77,19 +77,20 @@ useEffect(() => {
   }
 }, [gameHasStarted, obLeft, gameHeight, gameWidth]);
 
-// useRef(() => {
-//   let interval;
-//   if (gameHasStarted) {
-//   interval = setInterval(() => {
-//     setTime(time => time + 1)
-//   }, 1000);
-//   setScore(interval)
-//   console.log(interval)
-// } else if (!gameHasStarted) {
-//   clearInterval(interval);
-// }
-// return () => clearInterval(interval)
-// }, [gameHasStarted, time, setTime])
+useEffect(() => {
+  let interval;
+  if (gameHasStarted) {
+  interval = setInterval(() => {
+    let newTime = score + 1
+    setScore(newTime)
+    // setScore(interval)
+  }, 5000);
+  console.log(time)
+} else if (!gameHasStarted) {
+  clearInterval(interval);
+}
+return () => clearInterval(interval)
+}, [gameHasStarted, score, setTime])
 
 // const timerRef = useRef();
 // useEffect(function getScore() {
@@ -125,42 +126,49 @@ useEffect(() => {
       // display: 'grid',
       // gridTemplateColumns: 'repeat(3, 1fr)',
       display: 'flex',
-      width: '100%',
       justifyContent: 'center',
+      width: '100%',
       color: 'white',
       fontSize: 24,
       backgroundColor: 'blue',
       backgroundSize: '100%'
     }}
     >
-    <h1>{score}</h1>
-    <div id="Gamebox"
-      onClick={handleClick}
-      style={{
-        height: gameHeight,
-        width: gameWidth,
-        overflow: 'hidden',
-        margin: 'auto'
-      }}
-      >
-     <>
-     {/* <div id="monster"
-      style={{
-        position: 'relative',
-        top: '50%',
-        height: gameHeight,
-        width: '20px',
-        bottom: 0,
-        backgroundColor: 'red'
-      }}>
-       </div> */}
+      <h1>{score}</h1>
+      <div id="Gamebox"
+        onClick={handleClick}
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          height: gameHeight,
+          width: gameWidth,
+          overflow: 'hidden',
+          margin: 'auto',
+          position: 'relative',
+        }}
+        >
+      <div id="monster"
+          style={{
+            position: 'relative',
+            top: '50%',
+            height: gameHeight,
+            width: '20px',
+            bottom: 0,
+            backgroundColor: 'red',
+            zIndex: 4
+
+          }}>
+       </div>
+      <div>
+
       <Bird birdPosition={birdPosition} />
-      <div id="obstacle-top"
+       <div id="obstacle-top"
           style={{
             position: "relative",
             backgroundColor: 'green',
             width: obWidth,
             height: obHeight,
+            
             top: '0',
             left: obLeft
           }}>
@@ -175,7 +183,7 @@ useEffect(() => {
             left: obLeft
           }}>
         </div>
-     </>
+      </div>
     </div>
   </div>
   )

@@ -106,7 +106,7 @@ form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1.25vmin;
-  color: var(--text-light);
+  
 }
 
 label {
@@ -133,7 +133,7 @@ button, a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;

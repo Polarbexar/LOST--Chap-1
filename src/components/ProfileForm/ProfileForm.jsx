@@ -1,11 +1,12 @@
 import { Component } from "react";
+import './ProfileForm.css'
 
 
 export default class ProfileForm extends Component {
 
   state = {
     name: "",
-    avatar: ""
+    avatar: './assests/mario.png'
     //Do I need Error?
   };
 
@@ -22,6 +23,10 @@ export default class ProfileForm extends Component {
     const {name, avatar} = this.state; 
   }
 
+  Selected = (evt) => {
+
+  }
+
   //Do I need Render?
   render() {
   return (
@@ -33,9 +38,21 @@ export default class ProfileForm extends Component {
           <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
           <label>What do you look like?</label> 
           <br/>
-          
-          <option value="">Man</option>
+          <button 
+            type='button'
+            value='./assests/mario.png' 
+            name='avater'
+            // onSelect={}
+            >
+            <img src="./assests/mario.png" alt="" />
+            </button>
+          <option 
+          className='Profile-Pic' 
+          value="" 
+          data-style='background-image: url(./assests/mario.png)'></option>
           <option value="">Woman</option>
+          <input type="image" name="" id="" src="./assests/mario.png"/>
+          <button type='sumbit' onClick={this.handleSubmit}></button>
         </form>
       </div>
     </div>
