@@ -1,6 +1,6 @@
 
 
-export default function Bird({birdPosition}) {
+export default function Bird({birdPosition, profile}) {
   
   return (
    <div id="Bird"
@@ -11,7 +11,7 @@ export default function Bird({birdPosition}) {
       position:'relative',
       left: '50%',
       top: birdPosition}} >
-      <img src='/assests/mario.png' width="40px" height="40px"></img>
+      <img src={profile.avatar}width="40px" height="40px"></img>
   </div>
 
   )

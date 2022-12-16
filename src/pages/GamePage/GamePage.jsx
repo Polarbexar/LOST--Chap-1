@@ -5,7 +5,7 @@ import Bird from '../../components/Bird/Bird'
 
 
 
-export default function Game() {
+export default function Game({user, profile}) {
   
   let gameHeight = (window.innerHeight - 40)
   let gameWidth = window.innerWidth
@@ -80,6 +80,8 @@ useEffect(() => {
 useEffect(() => {
   let interval;
   if (gameHasStarted) {
+  console.log(profile)
+  console.log(user)
   interval = setInterval(() => {
     let newTime = score + 1
     setScore(newTime)
@@ -91,24 +93,6 @@ useEffect(() => {
 }
 return () => clearInterval(interval)
 }, [gameHasStarted, score, setTime])
-
-// const timerRef = useRef();
-// useEffect(function getScore() {
-//   if (gameHasStarted) {
-//   timerRef.current = setInterval(function() {
-//     // Using a "functional update" is better if computing 
-//     // the new state value from the current state value
-//     // https://reactjs.org/docs/hooks-reference.html#functional-updates
-//     setTime((secs) => secs + 1);
-//   }, 1000);
-//   console.log(timerRef.current)
-//   setScore(timerRef.current)
-//   // Return the cleanup component
-// } return function() {
-//     clearInterval(timerRef.current);
-//   };
-//   getScore()
-// }, [gameHasStarted]);
 
 useEffect(() => {
   const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
@@ -123,8 +107,6 @@ useEffect(() => {
   return ( 
     <div className="gamePage"
     style={{
-      // display: 'grid',
-      // gridTemplateColumns: 'repeat(3, 1fr)',
       display: 'flex',
       justifyContent: 'center',
       width: '100%',
@@ -161,7 +143,7 @@ useEffect(() => {
        </div>
       <div>
 
-      <Bird birdPosition={birdPosition} />
+      <Bird birdPosition={birdPosition} profile={profile} />
        <div id="obstacle-top"
           style={{
             position: "relative",

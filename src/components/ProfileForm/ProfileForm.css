@@ -1,3 +1,36 @@
 .Profile-Pic:active {
   border: 0.5px black;
 }
+
+.CharButton {
+  width: 400px;
+  height: 280px;
+  background-color: white;
+}
+.CharButton:focus {
+  border: 7px solid green;
+  background-color: tan;
+}
+.CharButton:hover {
+  border-color: green;
+  border: 7px dotted green;
+}
+button {
+  width: 400px;
+  height: 50px;
+  border: .5vmin solid ;
+  border-radius: .5vmin;
+  background-color: gray;
+}
+button:focus {
+  border: 7px black;
+  /* background-color: yellow; */
+}
+/* button:hover {
+  border: 7px black;
+  border-color: red;
+} */
+button:active{
+  border: 10px black;
+  background-color: yellow;
+}

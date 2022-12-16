@@ -1,11 +1,13 @@
 const User = require('../../models/user');
+const Profile = require('../../models/profile')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
+  profileInfo,
 };
 
 async function create(req, res) {
@@ -33,6 +35,13 @@ async function login(req, res) {
 function checkToken(req, res) {
   console.log('req.user', req.user);
   res.json(req.exp);
+}
+async function profileInfo(req, res) {
+  req.body.user = req.user._id;
+  const profile = await Profile.create(req.body)
+  console.log('req.user', req.user);
+  console.log(req.body)
+  res.json(profile);
 }
 
 /*-----Helper Function --*/
