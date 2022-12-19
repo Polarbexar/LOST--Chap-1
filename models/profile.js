@@ -14,10 +14,11 @@ const profileSchema = new Schema({
   },
   name: {type: String, required: true},
   avatar: {type: String, required: true},
-  highScore: 0,
+  highScore: Number,
   scores: [scoreSchema],
 }, {timestamps: true
 });
+
 
 
 module.exports = mongoose.model('Profile', profileSchema)

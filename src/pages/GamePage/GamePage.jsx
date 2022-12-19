@@ -1,58 +1,29 @@
 import { useState, useEffect, useRef } from "react"
-import Bird from '../../components/Bird/Bird'
+import Sprite from '../../components/Sprite/Sprite'
+import addProfileScore from '../../utilities/score-api'
 // import Obstacles from '../../components/Obstacles/Obstacles'
-
-
-
 
 export default function Game({user, profile}) {
   
   let gameHeight = (window.innerHeight - 40)
   let gameWidth = window.innerWidth
+  let collisionZone = window.innerWidth / 2
   
-  /////////////Bird Code
-  const position = 250
-  const birdSize = 20
-  const jumpHeight = 100
-  const gravity = 6
-
-  const [birdPosition, setBirdPosition] = useState(position)
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(8)
   const [gameHasStarted, setGameHasStarted] = useState(false)
   const [time, setTime] = useState(0)
-
+  const [xPos, setXPos] = useState(window.innerWidth / 2);
+  const [yPos, setYPos] = useState(700);
+  
+  let charPosition = {xPos, yPos}
   function handleClick() {
-    let newBirdPosition = birdPosition - jumpHeight;
     if (!gameHasStarted) {
       setGameHasStarted(true)
       setScore(0)
       setTime(0)
     }
-    if (newBirdPosition < 0) {
-      setBirdPosition(0)
-    } else {
-    setBirdPosition(newBirdPosition)
   }
-}
 
-useEffect(() => {
-  if (gameHasStarted) {
-
-  }
-})
-
-useEffect(() => {
-  let timeId;
-  if (gameHasStarted && birdPosition < gameHeight - birdSize ) {
-   timeId = setInterval(() => {
-    setBirdPosition(birdPosition => birdPosition + gravity) 
-   }, 24)
-  }
-  return () => {
-    clearInterval(timeId)
-  }
-}, [birdPosition, gameHasStarted, gameHeight])
-  
 ///////////////Obstacle Code
 const obWidth = 40;
 const obGap = 200;
@@ -80,14 +51,10 @@ useEffect(() => {
 useEffect(() => {
   let interval;
   if (gameHasStarted) {
-  console.log(profile)
-  console.log(user)
   interval = setInterval(() => {
     let newTime = score + 1
     setScore(newTime)
-    // setScore(interval)
   }, 5000);
-  console.log(time)
 } else if (!gameHasStarted) {
   clearInterval(interval);
 }
@@ -95,14 +62,15 @@ return () => clearInterval(interval)
 }, [gameHasStarted, score, setTime])
 
 useEffect(() => {
-  const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
-  const collisionWithBottom = birdPosition <= gameHeight && birdPosition >= gameHeight - bottomHeight;
-  if (obLeft >= 0 && 
-    obLeft <= obWidth && 
-    (collisionWithTop || collisionWithBottom)) {
+  
+  if (xPos === collisionZone && charPosition <= gameHeight - bottomHeight) {
+      scoreList()
       setGameHasStarted(false)
+      async function scoreList() {
+      await addProfileScore({score})
     }
-}, [birdPosition, obHeight, bottomHeight, obLeft, gameHeight])
+    }
+}, [obHeight, bottomHeight, obLeft, gameHeight, score])
  
   return ( 
     <div className="gamePage"
@@ -116,7 +84,7 @@ useEffect(() => {
       backgroundSize: '100%'
     }}
     >
-      <h1>{score}</h1>
+      <h1>{ score}</h1>
       <div id="Gamebox"
         onClick={handleClick}
         style={{
@@ -132,18 +100,22 @@ useEffect(() => {
       <div id="monster"
           style={{
             position: 'relative',
-            top: '50%',
+            top: '30%',
             height: gameHeight,
             width: '20px',
             bottom: 0,
-            backgroundColor: 'red',
+            backgroundColor: 'red',  
             zIndex: 4
-
+            
           }}>
        </div>
       <div>
-
-      <Bird birdPosition={birdPosition} profile={profile} />
+            <Sprite 
+            profile={profile} 
+            xPos={xPos}
+            setXPos={setXPos}
+            yPos={yPos}
+            setYPos={setYPos} />
        <div id="obstacle-top"
           style={{
             position: "relative",

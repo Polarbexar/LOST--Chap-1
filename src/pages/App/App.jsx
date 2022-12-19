@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 
 export default function App() {
-
+  let size = window.innerHeight
   const [user, setUser] = useState(getUser())
   const [profile, setProfile] = useState({})
   
@@ -29,7 +29,6 @@ export default function App() {
   
   return (
     <main className="App">
-      <h1>hello {profile.name}</h1>
       {user ? 
       <>
         <NavBar user={user} setUser={setUser}/>
@@ -37,7 +36,7 @@ export default function App() {
           {/* Route components in here */}
           <Route path="/gamepage" element={<Game profile={profile}/>} />
           <Route path="profilepage" element={<ProfilePage />} />
-          <Route path="homepage" element={<HomePage profile={profile} />} />
+          <Route path="homepage" element={<HomePage profile={profile} size={size}/>} />
         </Routes>
       </>
       :

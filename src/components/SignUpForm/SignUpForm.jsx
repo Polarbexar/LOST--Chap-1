@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { signUp } from '../../utilities/users-service';
 
 export default class SignUpForm extends Component{
@@ -9,6 +10,11 @@ export default class SignUpForm extends Component{
     confirm: '',
     error: ''
   };
+
+  navigate = (target) => {
+    const navigate = useNavigate();
+    navigate(target)
+  }
 
   handleChange = (evt) => {
     this.setState({
@@ -25,11 +31,13 @@ export default class SignUpForm extends Component{
       //The promise returned by the signUp service will resolve to the the user object inlcuded in the paayload of the JSON Web Token (<KKKKKKKKKKKJt)W)
       const user = await signUp(formData);
       this.props.setUser(user);
+      this.navigate('/profilepage')
     } catch {
       //an error occured
       //due to a duplicate email
       this.setState({ error: 'Sign Up Failed. Try again' });
     }
+    
   };
 
   render() {
