@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import Sprite from '../../components/Sprite/Sprite'
+import Sprite from '../../components/SpriteGame/Sprite'
 import addProfileScore from '../../utilities/score-api'
 // import Obstacles from '../../components/Obstacles/Obstacles'
 
@@ -9,7 +9,7 @@ export default function Game({user, profile}) {
   let gameWidth = window.innerWidth
   let collisionZone = window.innerWidth / 2
   
-  const [score, setScore] = useState(8)
+  const [score, setScore] = useState(0)
   const [gameHasStarted, setGameHasStarted] = useState(false)
   const [time, setTime] = useState(0)
   const [xPos, setXPos] = useState(window.innerWidth / 2);
@@ -31,6 +31,15 @@ const [obHeight, setObHeight] = useState(200);
 const [obLeft, setObLeft] = useState(gameWidth - obWidth - 40);
 const bottomHeight = gameHeight - obGap - obHeight;
 
+useEffect(() => {
+  if (score >= 7) {
+    scoreList()
+    async function scoreList() {
+    await addProfileScore({score})
+    setGameHasStarted(false)
+    }
+  }
+}, [score])
 
 useEffect(() => {
   let obId;
@@ -54,7 +63,7 @@ useEffect(() => {
   interval = setInterval(() => {
     let newTime = score + 1
     setScore(newTime)
-  }, 5000);
+  }, 1000);
 } else if (!gameHasStarted) {
   clearInterval(interval);
 }

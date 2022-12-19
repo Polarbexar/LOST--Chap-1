@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const scoreSchema = new Schema({
-  score: 0
+  score: Number
 }, {timestamps: true
 });
 

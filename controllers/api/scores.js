@@ -7,8 +7,10 @@ module.exports = {
 };
 
 async function addProfileScore(req, res) {
- const profile = await Profile.find({user: req.user._id})
+ const profile = await Profile.findOne({user: req.user._id})
  console.log(profile)
-  await profile[0].scores.push(req.body.score)
+  await profile.scores.push(req.body.score)
+    
+  console.log(profile)
   res.json(profile)
 }
