@@ -39,21 +39,6 @@ export default function App() {
 
   return (
     <main className="App">
-      {/* {user ? 
-        <>
-          <NavBar user={user} setUser={setUser} setProfile={setProfile} />
-            <Routes>
-              <Route path="/gamepage" element={<Game profile={profile} />} />
-              <Route path="/profilepage" element={<ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate} />} />
-              <Route path="/homepage" element={<HomePage profile={profile} size={size} />} />
-            </Routes>
-                </>
-         
-       : 
-        <AuthPage setUser={setUser} />
-}
-    </main>
-  ); */}
    {user ? (
       <div>
         <NavBar user={user} setUser={setUser} setProfile={setProfile} />
@@ -75,32 +60,5 @@ export default function App() {
     )}
   </main>
   );
-
-  
-  // return (
-  //   <main className="App">
-  //     {user ? (
-  //       // <div>
-  //       //   {user ? (
-  //           <>
-  //             <NavBar user={user} setUser={setUser} setProfile={setProfile} />
-  //             <Routes>
-  //               <Route path="/gamepage" element={<Game profile={profile} />} />
-  //               <Route
-  //                 path="profilepage"
-  //                 element={<ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate} />}
-  //               />
-  //               <Route path="homepage" element={<HomePage profile={profile} size={size} />} />
-  //             </Routes>
-  //             </>
-  //           ) : (
-  //             <ProfilePage />
-  //           )}
-  //       {/* </div> */}
-  //     ) : (
-  //       <AuthPage setUser={setUser} />
-  //     )}
-  //   </main>
-  // );
 }
 

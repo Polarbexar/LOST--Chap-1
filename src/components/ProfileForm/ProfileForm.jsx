@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { useNavigate } from 'react-router-dom'
 import './ProfileForm.css'
 import * as usersAPI from '../../utilities/users-api'
 
@@ -8,32 +9,25 @@ export default class ProfileForm extends Component {
   state = {
     name: "",
     avatar: './assets/peach.png'
-    //Do I need Error?
   };
   
   handleChange = async (evt) => {
     evt.preventDefault();
     this.setState({
       [evt.target.name]: evt.target.value
-      
-      //Do I need Error?
     });
   }
   
   handleSubmit = async (evt) => {
     evt.preventDefault();
+    // this.navigate = useNavigate()
     console.log(this.state)
     this.props.handleProfileUpdate()
     await usersAPI.addProfileInfo(this.state)
+    this.props.navigate('/homepage')
   }
-  
-  Selected = (evt) => {
-    
-  }
-  
-  //Do I need Render?
+
   render() {
- 
   return (
     <div>
       {this.props.profile ? 

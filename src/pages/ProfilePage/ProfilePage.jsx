@@ -1,17 +1,18 @@
 import ProfileForm from "../../components/ProfileForm/ProfileForm"
+import { useNavigate } from "react-router-dom"
 
 
 export default function ProfilePage({profile, handleProfileUpdate}) {
-
-  // async function addProfileInfo(data) {
-  //   console.log(data)
-  //   // const profile = await profileAPI.add(data)
-  // }
+let navigate = useNavigate()
+  
   return (
   <>
   <h1>This is the profile page</h1> 
   <br/>
-  <ProfileForm profile={profile} handleProfileUpdate={handleProfileUpdate}/>
+  <ProfileForm 
+  profile={profile} 
+  handleProfileUpdate={handleProfileUpdate}
+  navigate={navigate}/>
   </>
   )
 }
