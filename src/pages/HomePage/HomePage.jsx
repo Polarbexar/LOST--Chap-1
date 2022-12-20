@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import SpriteHome from '../../components/SpriteHome/SpriteHome'
+import HomeSprite from '../../components/HomeSprite/HomeSprite'
 import './HomePage.css'
 
 export default function HomePage({profile, size}) {
@@ -22,7 +22,7 @@ export default function HomePage({profile, size}) {
     <h1>Hello {profile.avatar} This is the home page</h1>
     <h1>Hello {profile.hghScore} This is the home page</h1>
     <h1>Hello {profile.scores} This is the home page</h1>
-    <SpriteHome 
+    <HomeSprite
     profile={profile}
     xPos={xPos}
     setXPos={setXPos}

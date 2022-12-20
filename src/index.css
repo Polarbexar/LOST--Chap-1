@@ -23,9 +23,9 @@ code {
   --text-dark: #615954;
 }
 
-*, *:before, *:after {
+/* *, *:before, *:after {
   box-sizing: border-box;
-}
+} */
 
 body, .HomePage{
   margin: auto;

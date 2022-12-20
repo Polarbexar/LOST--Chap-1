@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-export default function SpriteHome({profile, xPos, yPos, setXPos, setYPos}) {
+export default function GameSprite({profile, xPos, yPos, setXPos, setYPos, charWidth, charHeight}) {
+ 
   const [jumping, setJumping] = useState(false);
 
   useEffect(() => {
@@ -41,43 +42,43 @@ export default function SpriteHome({profile, xPos, yPos, setXPos, setYPos}) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [jumping, setXPos, setYPos]);
+  }, [jumping,setXPos, setYPos]);
 
   //Gavity 
-  // useEffect(() => {
-  //   let interval = null;
-  //   if (!jumping && yPos < 750) {
-  //     interval = setInterval(() => {
-  //       setYPos((y) => Math.min(y + 5, 750));
-  //     }, 16);
-  //   } else if (interval) {
-  //     clearInterval(interval);
-  //     interval = null;
-  //   }
-  //   return () => {
-  //     if (interval) {
-  //       clearInterval(interval);
-  //     }
-  //   };
-  // }, [jumping, yPos, setYPos]);
+  useEffect(() => {
+    let interval = null;
+    if (!jumping && yPos < 750) {
+      interval = setInterval(() => {
+        setYPos((y) => Math.min(y + 5, 750));
+      }, 16);
+    } else if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [jumping, yPos, setYPos]);
   
 
-  // useEffect(() => {
-  //   let interval = null;
-  //   if (jumping) {
-  //     interval = setInterval(() => {
-  //       setYPos((y) => Math.max(y - 10 , 0));
-  //     }, 24);
-  //   } else if (interval) {
-  //     clearInterval(interval);
-  //     interval = null;
-  //   }
-  //   return () => {
-  //     if (interval) {
-  //       clearInterval(interval);
-  //     }
-  //   };
-  // }, [yPos, setYPos, jumping])
+  useEffect(() => {
+    let interval = null;
+    if (jumping) {
+      interval = setInterval(() => {
+        setYPos((y) => Math.max(y - 10 , 0));
+      }, 24);
+    } else if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [yPos, setYPos, jumping])
  
 
   return (
@@ -88,7 +89,7 @@ export default function SpriteHome({profile, xPos, yPos, setXPos, setYPos}) {
       top: `${yPos}px`,
     }}
     >
-    <img src={profile.avatar}width="500px" height="500px" alt="character"></img>
+    <img src={profile.avatar}width={charWidth} height={charHeight} alt="character"></img>
     </div>
     );
   }

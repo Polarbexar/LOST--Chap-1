@@ -7,6 +7,9 @@ module.exports = {
 };
 
 async function getUserProfile(req, res) {
-  const profile = await Profile.find({user: req.user._id});
+  // if (req.user._id === null) {
+  //   return
+  // } else 
+  const profile = await Profile.findOne({user: req.user._id});
   res.json(profile)
 }

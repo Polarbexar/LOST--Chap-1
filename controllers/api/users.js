@@ -14,7 +14,7 @@ async function create(req, res) {
   try {
     const user = await User.create(req.body);
     const token = createJWT(user)
-    res.json(token);
+    res.json(token)
   } catch (err) {
     res.status(400).json(err);
   }
@@ -23,6 +23,7 @@ async function create(req, res) {
 async function login(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email })
+    // const profile = await Profile.findOne({user: req.user._id})
     if (!user) throw new Error();
     const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) throw new Error();

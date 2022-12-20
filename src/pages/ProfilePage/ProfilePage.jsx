@@ -1,7 +1,7 @@
 import ProfileForm from "../../components/ProfileForm/ProfileForm"
 
 
-export default function ProfilePage() {
+export default function ProfilePage({profile, handleProfileUpdate}) {
 
   // async function addProfileInfo(data) {
   //   console.log(data)
@@ -11,7 +11,7 @@ export default function ProfilePage() {
   <>
   <h1>This is the profile page</h1> 
   <br/>
-  <ProfileForm />
+  <ProfileForm profile={profile} handleProfileUpdate={handleProfileUpdate}/>
   </>
   )
 }
