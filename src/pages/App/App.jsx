@@ -6,7 +6,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Game from '../GamePage/GamePage'
 import ProfilePage from '../ProfilePage/ProfilePage';
 import HomePage from '../HomePage/HomePage';
-import getUserProfile from '../../utilities/profile-api'
+import { getUserProfile } from '../../utilities/profile-api'
 import './App.css';
 import { useEffect } from 'react';
 import { set } from 'mongoose';

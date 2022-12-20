@@ -2,6 +2,7 @@ import { Component } from "react";
 import { useNavigate } from 'react-router-dom'
 import './ProfileForm.css'
 import * as usersAPI from '../../utilities/users-api'
+import * as profileAPI from '../../utilities/profile-api'
 
 
 
@@ -20,10 +21,16 @@ export default class ProfileForm extends Component {
   
   handleSubmit = async (evt) => {
     evt.preventDefault();
-    // this.navigate = useNavigate()
-    console.log(this.state)
-    this.props.handleProfileUpdate()
     await usersAPI.addProfileInfo(this.state)
+    this.props.handleProfileUpdate()
+    this.props.navigate('/homepage')
+  }
+  
+  handleUpdateSubmit = async (evt) => {
+    evt.preventDefault();
+    console.log(this.state)
+    await profileAPI.updateProfileInfo(this.state)
+    this.props.handleProfileUpdate()
     this.props.navigate('/homepage')
   }
 
@@ -68,7 +75,7 @@ export default class ProfileForm extends Component {
             name='avatar'
             onClick={this.handleChange}
             src="./assets/luigi.png" width="300px" height='200px'alt="" />
-          <button type='submit' onClick={this.handleSubmit}>submit</button>
+          <button type='submit' onClick={this.handleUpdateSubmit}>submit</button>
         </form>
       </div>
       :
