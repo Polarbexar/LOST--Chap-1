@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import GameSprite from '../../components/GameSprite/GameSprite'
-import addProfileScore from '../../utilities/score-api'
+import { addProfileScore, getHighScores } from '../../utilities/score-api'
 // import Obstacles from '../../components/Obstacles/Obstacles'
 
 export default function Game({user, profile}) {
@@ -61,15 +61,16 @@ export default function Game({user, profile}) {
 
 ///////////////Obstacle Code
 
-// useEffect(() => {
-//   if (score >= 7) {
-//     scoreList()
-//     async function scoreList() {
-//     await addProfileScore({score})
-//     setGameHasStarted(false)
-//     }
-//   }
-// }, [score])
+useEffect(() => {
+  if (score >= 10) {
+    scoreList()
+    async function scoreList() {
+    await addProfileScore({score})
+    // await getHighScores()
+    setGameHasStarted(false)
+    }
+  }
+}, [score])
 
 //Obs movement
 useEffect(() => {
@@ -145,7 +146,7 @@ useEffect(() => {
   //     charRect.y < obRect.y + obRect.height &&
   //     charRect.height + charRect.y > obRect.y) {
   //   // The character and the obstacle are colliding
-     setGameHasStarted(false)
+    //  setGameHasStarted(false)
   }
 }, [xPos, yPos, obLeft, obHeight]);
 //Browser Size

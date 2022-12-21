@@ -42,7 +42,7 @@ export default class ProfileForm extends Component {
           <h4>Employee, Change your profile here. Tell us about yourself</h4>
         <form className="Profile-Form">
           <label>Employee, print your name</label>
-          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
+          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} placeholder={this.props.profile.name} required />
           <label>What do you look like?</label> 
           <br/>
           <input

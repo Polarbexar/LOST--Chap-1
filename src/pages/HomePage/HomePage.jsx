@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import HighScoreBoard from '../../components/HighScoreBoard/HighScoreBoard';
 import HomeSprite from '../../components/HomeSprite/HomeSprite'
 import './HomePage.css'
 
@@ -19,9 +20,6 @@ export default function HomePage({profile, size}) {
    }}
    >
     <h1>Hello {profile.name} This is the home page</h1>
-    <h1>Hello {profile.avatar} This is the home page</h1>
-    <h1>Hello {profile.hghScore} This is the home page</h1>
-    <h1>Hello {profile.scores} This is the home page</h1>
     <HomeSprite
     profile={profile}
     xPos={xPos}
@@ -32,7 +30,8 @@ export default function HomePage({profile, size}) {
     style={{
       left: 50
     }}>
-    <Link to="/profilepage"><img src="./assets/mirror.png" alt="mirror-link to profile page" /></Link>
+    <HighScoreBoard profile={profile}/>
+    {/* <Link to="/profilepage"><img src="./assets/mirror.png" alt="mirror-link to profile page" /></Link> */}
     </div>
     <div>
     </div>

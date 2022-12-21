@@ -24,8 +24,6 @@ export default function App() {
     getProfile()
     async function getProfile() {
     const currentUser = await getUserProfile()
-    console.log(currentUser)
-    console.log(currentUser.name)
     setProfile(currentUser)
     }
   }
@@ -34,8 +32,6 @@ export default function App() {
   function handleProfileUpdate() {
     setUpdateTrigger(!updateTrigger)
   }
-
-  console.log(profile)
 
   return (
     <main className="App">
@@ -49,7 +45,8 @@ export default function App() {
               path="/profilepage"
               element={<ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate} />}
             />
-            <Route path="/homepage" element={<HomePage profile={profile} size={size} />} />
+            <Route path="/homepage" 
+            element={<HomePage profile={profile} size={size} />} />
           </Routes>
         ) : (
           <ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate}/>
