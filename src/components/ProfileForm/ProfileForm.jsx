@@ -53,14 +53,14 @@ export default class ProfileForm extends Component {
             value='./assets/mario.png' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/mario.png" width="200px" height='200px' alt="" />
+            src="./assets/bird-1-edit.gif" width="200px" height='200px' alt="" />
           <input 
             className='CharButton'
             type='image'
             value='./assets/bowser.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/bowser.gif" width="300px" height='200px' alt="" 
+            src="./assets/bird-2-edit.gif" width="300px" height='200px' alt="" 
             />
           <input
             className='CharButton'
@@ -94,7 +94,7 @@ export default class ProfileForm extends Component {
             value='./assets/mario.png' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/mario.png" width="100px" height='100px' alt="" />
+            src="./assets/bird-1-edit.gif" width="100px" height='100px' alt="" />
           <input 
             className='CharButton'
             type='image'

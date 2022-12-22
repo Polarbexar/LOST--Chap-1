@@ -17,7 +17,6 @@
   background-color: grey;
   border: 2px solid black;
   border-radius: 25%;
-  margin: 9px
 }
 .CharButton:focus {
   border: 7px solid green;

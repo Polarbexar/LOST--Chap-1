@@ -5,19 +5,19 @@ import styled from "styled-components"
 // import Obstacles from '../../components/Obstacles/Obstacles'
 
 export default function Game({user, profile}) {
-    const [gameWidth, setGameWidth] = useState(window.innerWidth)
+    const [gameWidth, setGameWidth] = useState(700)
     const [gameHeight, setGameHeight] = useState(700)
     const [score, setScore] = useState(0)
     const [gameHasStarted, setGameHasStarted] = useState(false)
     const [time, setTime] = useState(0)
 
   //////////////////Game Code
-  const gravity = 3
+  const gravity = 5
 
   ////////////////////Bird Code
-  const position = 250
-  const birdSize = 20
-  const jumpHeight = 50
+  const position = 350
+  const birdSize = 70
+  const jumpHeight = 100
   const [birdPosition, setBirdPosition] = useState(position)
 
 
@@ -83,7 +83,7 @@ useEffect(() => {
 }, [gameHasStarted, obLeft]);
 
 useEffect(() => {
-    if (score >= 4) {
+    if (score >= 100) {
       scoreList()
       async function scoreList() {
       await addProfileScore({score})
@@ -93,25 +93,25 @@ useEffect(() => {
     }
   }, [score])
 
-// useEffect(() => {
-//   const collisionWithTop = birdPosition >= 0 && birdPosition > obHeight;
-//   const collisionWithBottom = birdPosition <= 500 && birdPosition >=500 - bottomHeight;
-//   console.log(obHeight)
-//   console.log(birdPosition)
-//   if (obLeft >= 0 && 
-//       obLeft <= obWidth && 
-//       (collisionWithTop || collisionWithBottom)) {
-//         console.log('collison')
-//     setGameHasStarted(false)
-//     setScore(0)
-//   }
-//   if (collisionWithTop) {
-//     console.log('topCol')
-//   }
-//   if (collisionWithBottom) {
-//     console.log('topCol')
-//   }
-// }, [birdPosition, obHeight, bottomHeight, obLeft])
+useEffect(() => {
+  const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
+  const collisionWithBottom = birdPosition <= 700 && birdPosition >=700 - bottomHeight;
+  console.log(obHeight)
+  console.log(birdPosition)
+  if (obLeft >= 0 && 
+      obLeft <= obWidth && 
+      (collisionWithTop || collisionWithBottom)) {
+        console.log('collison')
+    setGameHasStarted(false)
+    setScore(0)
+  }
+  if (collisionWithTop) {
+    console.log('topCol')
+  }
+  if (collisionWithBottom) {
+    console.log('topCol')
+  }
+}, [birdPosition, obHeight, bottomHeight, obLeft])
 
 ////////////////////
   return (

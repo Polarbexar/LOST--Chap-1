@@ -14,13 +14,13 @@ export default function HomePage({profile, size, setProfile}) {
   return (
    <div className='HomePage'
     style={{
-      height: size,
+      height: '100vh',
     }}>
    
     <h1>Try-outs!</h1>
     <h1>A Taco Bell Adventure</h1>
     <h3>Welcome {profile.name} to the Try-outs!</h3>
-    <container
+    <section
       className="scoreContainer"
       style={{
         display: 'flex',
@@ -35,7 +35,7 @@ export default function HomePage({profile, size, setProfile}) {
             profile={profile} 
             setProfile={setProfile} />
         </div>
-    </container>
+    </section>
   </div>
   )
 }
