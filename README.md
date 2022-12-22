@@ -3,7 +3,7 @@
 
 ## Description:
 
-If storks can deliver babies, then why not Taco Bell.
+If storks can deliver babies, then why not Taco Bell food.
 
 Taco Bell is holding try outs for this new position. You do not need to be a carrier pigeon. All birds are welcome.
 
@@ -20,7 +20,7 @@ On the Game Page, click your mouse to start the game and then click to counterac
 Also lots of credit to my instructor at General Assembly:
 * Stephanie Lee
 
-This app is dedidcated to stephanie, Frank who consistenly pushed and checked on me, and all of pod 2!
+This app is dedidcated to Stephanie, Frank who consistenly pushed and checked on me, and all of pod 2!
 
 
 ### Coming Soon
