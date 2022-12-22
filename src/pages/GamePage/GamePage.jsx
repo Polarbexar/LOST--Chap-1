@@ -55,59 +55,59 @@ export default function Game({user, profile}) {
     }
 }, [birdPosition, gameHasStarted])
 
-// Calculate Score
-useEffect(() => {
-  let interval;
-  if (gameHasStarted) {
-  interval = setInterval(() => {
-    let newTime = score 
-    if (score >= 100) {
-      newTime += 1000;
-    } else if (score >= 200) {
-      newTime += 5000
-  } else {
-      newTime += 20;
-  }
-    setScore(newTime)
-  }, 1000);
-} else if (!gameHasStarted) {
-  clearInterval(interval);
-}
-return () => clearInterval(interval)
-}, [gameHasStarted, score, setTime])
-
-//Obstacles Movement
-useEffect(() => {
-  let obId;
-  if (gameHasStarted && obLeft >= -obWidth) {
-    obId = setInterval(() => {
-      setObLeft((obLeft) => obLeft - 10);
-    }, 24)
-    return () => {
-      clearInterval(obId)
-    };
-  }
-  else {
-    setObLeft(gameWidth - obWidth)
-    setObHeight(Math.random() * (gameHeight - obGap));
-  }
-}, [gameHasStarted, obLeft]);
-
-//Collision Detection
-useEffect(() => {
-  const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
-  const collisionWithBottom = birdPosition <= 700 && birdPosition >=700 - bottomHeight;
-  if (obLeft >= 0 && 
-    obLeft <= obWidth && 
-    (collisionWithTop || collisionWithBottom)) {
-        scoreList()
-        async function scoreList() {
-        await addProfileScore({score})
-        await getHighScores()
-      }
-      setGameHasStarted(false)
+  // Calculate Score
+  useEffect(() => {
+    let interval;
+    if (gameHasStarted) {
+    interval = setInterval(() => {
+      let newTime = score 
+      if (score >= 100) {
+        newTime += 1000;
+      } else if (score >= 200) {
+        newTime += 5000
+    } else {
+        newTime += 20;
     }
-}, [birdPosition, obHeight, bottomHeight, obLeft])
+      setScore(newTime)
+    }, 1000);
+  } else if (!gameHasStarted) {
+    clearInterval(interval);
+  }
+  return () => clearInterval(interval)
+  }, [gameHasStarted, score, setTime])
+
+  //Obstacles Movement
+  useEffect(() => {
+    let obId;
+    if (gameHasStarted && obLeft >= -obWidth) {
+      obId = setInterval(() => {
+        setObLeft((obLeft) => obLeft - 10);
+      }, 24)
+      return () => {
+        clearInterval(obId)
+      };
+    }
+    else {
+      setObLeft(gameWidth - obWidth)
+      setObHeight(Math.random() * (gameHeight - obGap));
+    }
+  }, [gameHasStarted, obLeft]);
+
+  //Collision Detection
+  useEffect(() => {
+    const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
+    const collisionWithBottom = birdPosition <= 700 && birdPosition >=700 - bottomHeight;
+    if (obLeft >= 0 && 
+      obLeft <= obWidth && 
+      (collisionWithTop || collisionWithBottom)) {
+          scoreList()
+          async function scoreList() {
+          await addProfileScore({score})
+          await getHighScores()
+        }
+        setGameHasStarted(false)
+      }
+  }, [birdPosition, obHeight, bottomHeight, obLeft])
 
 ////////////////////
   return (
