@@ -1,11 +1,23 @@
+.profileForm {
+  background: url(https://imgur.com/QM4oDgk.png) no-repeat center center;
+  /* background-color: black; */
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
 .Profile-Pic:active {
-  border: 0.5px black;
+  border: 0.5px solid black;
 }
 
 .CharButton {
   width: 400px;
   height: 280px;
-  background-color: white;
+  background-color: grey;
+  border: 2px solid black;
+  border-radius: 25%;
+  margin: 9px
 }
 .CharButton:focus {
   border: 7px solid green;

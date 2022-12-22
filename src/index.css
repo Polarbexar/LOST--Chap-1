@@ -1,4 +1,39 @@
-body, .HomePage {
+.App {
+  background-image: url(https://imgur.com/TXaN7g4.png);
+  height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body, .HomePage {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -27,15 +62,15 @@ code {
   box-sizing: border-box;
 } */
 
-body, .HomePage{
+/* body, .HomePage{
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
   /* padding: 2vmin; */
-  height: 100vh;
+  /* height: 100vh;
 }
 
 code {
@@ -122,12 +157,12 @@ input {
   border-radius: .5vmin;
   color: var(--text-dark);
   background-image: none !important; /* prevent lastpass */
-  outline: none;
+  /* outline: none;
 }
 
 input:focus {
-  border-color: var(--orange);
-}
+  border-color: var(--orange); 
+} */
 
 /* button, a.button {
   margin: 1vmin;

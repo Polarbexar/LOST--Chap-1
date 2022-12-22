@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './ProfileForm.css'
 import * as usersAPI from '../../utilities/users-api'
 import * as profileAPI from '../../utilities/profile-api'
+import './ProfileForm.css'
 
 
 
@@ -36,11 +37,12 @@ export default class ProfileForm extends Component {
 
   render() {
   return (
-    <div>
+    <div className="profileForm">
+      <h1>This is the profile page</h1> 
       {this.props.profile ? 
       <div>
           <h4>Employee, Change your profile here. Tell us about yourself</h4>
-        <form className="Profile-Form">
+          <form className="Profile-Form">
           <label>Employee, print your name</label>
           <input type="text" name="name" value={this.state.name} onChange={this.handleChange} placeholder={this.props.profile.name} required />
           <label>What do you look like?</label> 
@@ -92,14 +94,14 @@ export default class ProfileForm extends Component {
             value='./assets/mario.png' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/mario.png" width="200px" height='200px' alt="" />
+            src="./assets/mario.png" width="100px" height='100px' alt="" />
           <input 
             className='CharButton'
             type='image'
             value='./assets/bowser.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/bowser.gif" width="300px" height='200px' alt="" 
+            src="./assets/bowser.gif" width="100px" height='100px' alt="" 
             />
           <input
             className='CharButton'
@@ -107,7 +109,7 @@ export default class ProfileForm extends Component {
             value='./assets/peach.png' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/peach.png" width="200px" height='200px'alt="" />
+            src="./assets/peach.png" width="100px" height='100px'alt="" />
             
           <input
             className='CharButton'
@@ -115,7 +117,7 @@ export default class ProfileForm extends Component {
             value='./assets/luigi.png' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/luigi.png" width="300px" height='200px'alt="" />
+            src="./assets/luigi.png" width="100px" height='100px'alt="" />
           <button type='submit' onClick={this.handleSubmit}>submit</button>
         </form>
       </div>
@@ -123,14 +125,4 @@ export default class ProfileForm extends Component {
     </div>
   )
   }
-
-
-
-
-
-
-
-
-
-
 }

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as scoresAPI from '../../utilities/score-api'
 import ScoreListItem from '../ScoreListItem/ScoreListItem'
+import './HighScoreBoard.css'
 
-export default function HighScoreBoard({profile}) {
+export default function HighScoreBoard() {
   const [scores, setScores] = useState([]);
   const scoreListItem = scores.map((s, idx) => (
     <ScoreListItem score={s} key={idx} />
@@ -17,5 +18,10 @@ export default function HighScoreBoard({profile}) {
     fetchScores();
   }, []);
 
-  return <div>{scoreListItem}</div>
+  return (
+    <div className="highScore">
+    <h3>All Time High Scores</h3>
+    {scoreListItem}
+    </div>
+  )
 }

@@ -36,7 +36,10 @@ export default function App() {
   return (
     <main className="App">
    {user ? (
-      <div>
+      <div
+      style={{
+      fontSize: '20px'
+      }}>
         <NavBar user={user} setUser={setUser} setProfile={setProfile} />
         {profile ? (
           <Routes>
@@ -46,7 +49,7 @@ export default function App() {
               element={<ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate} />}
             />
             <Route path="/homepage" 
-            element={<HomePage profile={profile} size={size} />} />
+            element={<HomePage profile={profile} setProfile={setProfile} size={size} />} />
           </Routes>
         ) : (
           <ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate}/>

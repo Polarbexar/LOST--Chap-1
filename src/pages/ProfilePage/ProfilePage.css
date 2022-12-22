@@ -1,0 +1,10 @@
+.mainMenu {
+	width:100%;
+	font-family: sans-serif;
+
+}
+
+.mainMenu a:hover {
+	background-color: rgba(0, 128, 255, 1);
+	color:#fff;
+}
