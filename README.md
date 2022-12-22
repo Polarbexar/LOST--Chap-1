@@ -20,7 +20,7 @@ On the Game Page, click your mouse to start the game and then click to counterac
 Also lots of credit to my instructor at General Assembly:
 * Stephanie Lee
 
-This app is dedidcated to Stephanie, Frank who consistenly pushed and checked on me, and all of pod 2!
+This app is dedicated to Stephanie, Frank who consistenly pushed and checked on me, and all of pod 2!
 
 
 ### Coming Soon
