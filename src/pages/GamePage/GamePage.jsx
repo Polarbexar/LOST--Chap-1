@@ -12,7 +12,7 @@ export default function Game({user, profile}) {
     const [time, setTime] = useState(0)
 
   //////////////////Game Code
-  const gravity = 5
+  const gravity = 8
 
   ////////////////////Bird Code
   const position = 350
@@ -50,7 +50,14 @@ useEffect(() => {
   let interval;
   if (gameHasStarted) {
   interval = setInterval(() => {
-    let newTime = score + 1
+    let newTime = score 
+    if (score >= 100) {
+      newTime += 1000;
+    } else if (score >= 200) {
+      newTime += 5000
+  } else {
+      newTime += 20;
+  }
     setScore(newTime)
   }, 1000);
 } else if (!gameHasStarted) {
@@ -61,7 +68,7 @@ return () => clearInterval(interval)
 
 //////////////////Obstacles Code
 const obWidth = 40;
-const obGap = 300;
+const obGap = 200;
 const [obHeight, setObHeight] = useState(200);
 const [obLeft, setObLeft] = useState(gameWidth - obWidth);
 const bottomHeight = gameHeight - obGap - obHeight;
@@ -70,7 +77,7 @@ useEffect(() => {
   let obId;
   if (gameHasStarted && obLeft >= -obWidth) {
     obId = setInterval(() => {
-      setObLeft((obLeft) => obLeft - 5);
+      setObLeft((obLeft) => obLeft - 10);
     }, 24)
     return () => {
       clearInterval(obId)
@@ -82,28 +89,20 @@ useEffect(() => {
   }
 }, [gameHasStarted, obLeft]);
 
-useEffect(() => {
-    if (score >= 100) {
-      scoreList()
-      async function scoreList() {
-      await addProfileScore({score})
-      await getHighScores()
-      setGameHasStarted(false)
-      }
-    }
-  }, [score])
 
 useEffect(() => {
   const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
   const collisionWithBottom = birdPosition <= 700 && birdPosition >=700 - bottomHeight;
-  console.log(obHeight)
-  console.log(birdPosition)
   if (obLeft >= 0 && 
-      obLeft <= obWidth && 
-      (collisionWithTop || collisionWithBottom)) {
-        console.log('collison')
-    setGameHasStarted(false)
-    setScore(0)
+    obLeft <= obWidth && 
+    (collisionWithTop || collisionWithBottom)) {
+        scoreList()
+        async function scoreList() {
+        await addProfileScore({score})
+        await getHighScores()
+      }
+      setGameHasStarted(false)
+      setScore(0)
   }
   if (collisionWithTop) {
     console.log('topCol')
@@ -142,7 +141,7 @@ useEffect(() => {
             border: '0',
             margin: '0',
             top: birdPosition}} >
-            <img src="./assets/bird-1-edit.gif" alt="" height='70' />
+            <img src={profile.avatar} alt="" height='70' />
         </div>
         <div id="obstacle-top"
           style={{
