@@ -30,7 +30,7 @@ This app is dedidcated to Stephanie, Frank who consistenly pushed and checked on
 
 # Play It!
 How bad do you want to work at Taco Bell? See it you want it more then the other birds! 
-[Play it here!](https://polarbexar.github.io/Mastermind-/)
+[Play it here!](https://lost-the-taco-bell-files.herokuapp.com/)
 
 This game was made using 
 React
