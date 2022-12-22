@@ -50,33 +50,33 @@ export default class ProfileForm extends Component {
           <input
             className='CharButton'
             type='image'
-            value='./assets/mario.png' 
+            value='./assets/bigBrownBird.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/bird-1-edit.gif" width="200px" height='200px' alt="" />
+            src="./assets/bigBrownBird.gif" width="200px" height='200px' alt="" />
           <input 
             className='CharButton'
             type='image'
-            value='./assets/bowser.gif' 
+            value='./assets/whiteBird.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/bird-2-edit.gif" width="300px" height='200px' alt="" 
+            src="./assets/whiteBird.gif" width="300px" height='200px' alt="" 
             />
           <input
             className='CharButton'
             type='image'
-            value='./assets/peach.png' 
+            value='./assets/redBird.webp' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/peach.png" width="200px" height='200px'alt="" />
+            src="./assets/redBird.webp" width="200px" height='200px'alt="" />
             
           <input
             className='CharButton'
             type='image'
-            value='./assets/luigi.png' 
+            value='./assets/blueBird.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/luigi.png" width="300px" height='200px'alt="" />
+            src="./assets/blueBird.gif" width="300px" height='200px'alt="" />
           <button type='submit' onClick={this.handleUpdateSubmit}>submit</button>
         </form>
       </div>
@@ -91,33 +91,33 @@ export default class ProfileForm extends Component {
           <input
             className='CharButton'
             type='image'
-            value='./assets/mario.png' 
+            value='./assets/bigBrownBird.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/bird-1-edit.gif" width="100px" height='100px' alt="" />
+            src="./assets/bigBrownBird.gif" width="100px" height='100px' alt="" />
           <input 
             className='CharButton'
             type='image'
-            value='./assets/bowser.gif' 
+            value='./assets/whiteBird.gif'
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/bowser.gif" width="100px" height='100px' alt="" 
+            src="./assets/whiteBird.gif" width="100px" height='100px' alt="" 
             />
           <input
             className='CharButton'
             type='image'
-            value='./assets/peach.png' 
+            value='./assets/redBird.webp' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/peach.png" width="100px" height='100px'alt="" />
+            src="./assets/redBird.webp" width="100px" height='100px'alt="" />
             
           <input
             className='CharButton'
             type='image'
-            value='./assets/luigi.png' 
+            value='./assets/blueBird.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/luigi.png" width="100px" height='100px'alt="" />
+            src="./assets/blueBird.gif" width="100px" height='100px'alt="" />
           <button type='submit' onClick={this.handleSubmit}>submit</button>
         </form>
       </div>
