@@ -1,49 +1,59 @@
 import { useState, useEffect, useRef } from "react"
-import GameSprite from '../../components/GameSprite/GameSprite'
 import { addProfileScore, getHighScores } from '../../utilities/score-api'
 import styled from "styled-components"
-// import Obstacles from '../../components/Obstacles/Obstacles'
+import './GamePage.css'
+
 
 export default function Game({user, profile}) {
-    const [gameWidth, setGameWidth] = useState(700)
-    const [gameHeight, setGameHeight] = useState(700)
-    const [score, setScore] = useState(0)
-    const [gameHasStarted, setGameHasStarted] = useState(false)
-    const [time, setTime] = useState(0)
+  const [gameWidth, setGameWidth] = useState(700)
+  const [gameHeight, setGameHeight] = useState(700)
+  const [score, setScore] = useState(0)
+  const [gameHasStarted, setGameHasStarted] = useState(false)
+  const [time, setTime] = useState(0)
 
   //////////////////Game Code
-  const gravity = 8
+  const gravity = 10
 
   ////////////////////Bird Code
   const position = 350
   const birdSize = 70
   const jumpHeight = 100
   const [birdPosition, setBirdPosition] = useState(position)
+  
+  //////////////////Obstacles Code
+  const obWidth = 40;
+  const obGap = 200;
+  const [obHeight, setObHeight] = useState(200);
+  const [obLeft, setObLeft] = useState(gameWidth - obWidth);
+  const bottomHeight = gameHeight - obGap - obHeight;
 
 
-  useEffect(() => {
-  let timeId;
-  if (gameHasStarted && birdPosition < gameHeight - birdSize ) {
-   timeId = setInterval(() => {
-    setBirdPosition(birdPosition => birdPosition + gravity) 
-   }, 24)
-  }
-  return () => {
-    clearInterval(timeId)
-  }
-}, [birdPosition, gameHasStarted])
-
+  //Start Game
   function handleClick() {
     let newBirdPosition = birdPosition - jumpHeight;
     if (!gameHasStarted) {
       setGameHasStarted(true)
+      setScore(0)
     }
     if (newBirdPosition < 0) {
       setBirdPosition(0)
     } else {
     setBirdPosition(newBirdPosition)
+    }
   }
-}
+
+  //Gravity
+  useEffect(() => {
+    let timeId;
+    if (gameHasStarted && birdPosition < gameHeight - birdSize ) {
+    timeId = setInterval(() => {
+      setBirdPosition(birdPosition => birdPosition + gravity) 
+    }, 24)
+    }
+    return () => {
+      clearInterval(timeId)
+    }
+}, [birdPosition, gameHasStarted])
 
 // Calculate Score
 useEffect(() => {
@@ -66,13 +76,7 @@ useEffect(() => {
 return () => clearInterval(interval)
 }, [gameHasStarted, score, setTime])
 
-//////////////////Obstacles Code
-const obWidth = 40;
-const obGap = 200;
-const [obHeight, setObHeight] = useState(200);
-const [obLeft, setObLeft] = useState(gameWidth - obWidth);
-const bottomHeight = gameHeight - obGap - obHeight;
-
+//Obstacles Movement
 useEffect(() => {
   let obId;
   if (gameHasStarted && obLeft >= -obWidth) {
@@ -89,7 +93,7 @@ useEffect(() => {
   }
 }, [gameHasStarted, obLeft]);
 
-
+//Collision Detection
 useEffect(() => {
   const collisionWithTop = birdPosition >= 0 && birdPosition < obHeight;
   const collisionWithBottom = birdPosition <= 700 && birdPosition >=700 - bottomHeight;
@@ -102,14 +106,7 @@ useEffect(() => {
         await getHighScores()
       }
       setGameHasStarted(false)
-      setScore(0)
-  }
-  if (collisionWithTop) {
-    console.log('topCol')
-  }
-  if (collisionWithBottom) {
-    console.log('topCol')
-  }
+    }
 }, [birdPosition, obHeight, bottomHeight, obLeft])
 
 ////////////////////
@@ -121,53 +118,201 @@ useEffect(() => {
         width: '100%',
         justifyContent: 'center',
         color: 'white',
-        fontSize: 24
+        fontSize: 24,
+        textAlign: 'center',
       }}>
       <div id="Gamebox"
         style={{
           backgroundColor: 'black',
           height: 700,
           width: 700,
-          overflow: 'hidden'
+          overflow: 'hidden',
+          position: 'absolute',
+          width: '700px',
+          height: '700px',
+          borderRadius: '5%',
         }}>
-        <div id="Bird"
-          style={{
-            position:'absolute',
-            backgroundColor: 'red',
-            borderRadius:'50%',
-            height: '50px',
-            width: '20px',
-            padding: '0',
-            border: '0',
-            margin: '0',
-            top: birdPosition}} >
-            <img src={profile.avatar} alt="" height='70' />
-        </div>
-        <div id="obstacle-top"
-          style={{
-            position: "relative",
-            backgroundColor: 'green',
-            width: obWidth,
-            height: obHeight,
-            top: '0',
-            left: obLeft
-          }}>
-        </div>
-        <div id="obstacle-bottom"
-          style={{
-            position: "relative",
-            backgroundColor: 'green',
-            width: obWidth,
-            height: bottomHeight,
-            top: gameHeight - (obHeight + bottomHeight),
-            left: obLeft
-          }}>
-        </div>
-        <span>{score}</span>
-     </div>
+          <Layer1>
+             <Layer2>
+                <Layer3>
+                   <Layer4>
+                       <Layer5>
+                          <div className="winMessage">
+                          {gameHasStarted ? `Current Score:${score}` : <div>Game Over! Final Score: {score} <br></br> You're going to need to try harder <br></br> if you want to get hired!</div>}
+                          </div>
+                            <Layer6>
+                              <div id="Bird"
+                                style={{
+                                  position:'absolute',
+                                  borderRadius:'50%',
+                                  height: '50px',
+                                  width: '20px',
+                                  padding: '0',
+                                  border: '0',
+                                  margin: '0',
+                                  top: birdPosition}} >
+                                  <img src={profile.avatar} alt="" height='70' />
+                              </div>
+                              <div id="obstacle-top"
+                                style={{
+                                  position: "relative",
+                                  backgroundColor: 'rgba(70, 70, 70, 1)',
+                                  width: obWidth,
+                                  height: obHeight,
+                                  top: '0',
+                                  left: obLeft,
+                                  borderRadius: '15%'
+                                }}>
+                              </div>
+                              <div id="obstacle-bottom"
+                                style={{
+                                  position: "relative",
+                                  backgroundColor: 'rgba(70, 70, 70, 1)',
+                                  width: obWidth,
+                                  height: bottomHeight,
+                                  top: gameHeight - (obHeight + bottomHeight),
+                                  left: obLeft,
+                                  borderRadius: '15%'
+                                }}>
+                              </div>
+                            </Layer6>
+                        </Layer5>
+                   </Layer4>
+                </Layer3>
+             </Layer2>
+          </Layer1>
+       </div>
     </div>
   );
 }
+
+const Layer1 = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/layer1.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: move-layer1 40s linear infinite;
+
+  @keyframes move-layer1 {
+    50% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: +100% 0;
+    }
+  }
+`;
+
+const Layer2 = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/layer2.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: move-layer2 30s linear infinite;
+
+  @keyframes move-layer2 {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: +100% 0;
+    }
+  }
+  `;
+const Layer3 = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/layer3.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: move-layer3 30s linear infinite;
+
+  @keyframes move-layer3 {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: +100% 0;
+    }
+  }
+  `;
+const Layer4 = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/layer4.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: move-layer4 30s linear infinite;
+
+  @keyframes move-layer4 {
+    50% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: +100% 0;
+    }
+  }
+  `;
+const Layer5 = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/layer5.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: move-layer5 30s linear infinite;
+
+  @keyframes move-layer5 {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: +100% 0;
+    }
+  }
+  `;
+const Layer6 = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/layer6.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: move-layer6 30s linear infinite;
+
+  @keyframes move-layer6 {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: +100% 0;
+    }
+  }
+  `;
 
   
 //   //Game State

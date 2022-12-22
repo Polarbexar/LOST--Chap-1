@@ -1,16 +1,14 @@
 import { useState} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
+import { useEffect } from 'react';
+import { getUserProfile } from '../../utilities/profile-api'
 import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import Game from '../GamePage/GamePage'
 import ProfilePage from '../ProfilePage/ProfilePage';
 import HomePage from '../HomePage/HomePage';
-import { getUserProfile } from '../../utilities/profile-api'
 import './App.css';
-import { useEffect } from 'react';
-import { set } from 'mongoose';
-
 
 
 export default function App() {
@@ -35,29 +33,29 @@ export default function App() {
 
   return (
     <main className="App">
-   {user ? (
-      <div
-      style={{
-      fontSize: '20px'
-      }}>
-        <NavBar user={user} setUser={setUser} setProfile={setProfile} />
-        {profile ? (
-          <Routes>
-            <Route path="/gamepage" element={<Game profile={profile} />} />
-            <Route
-              path="/profilepage"
-              element={<ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate} />}
-            />
-            <Route path="/homepage" 
-            element={<HomePage profile={profile} setProfile={setProfile} size={size} />} />
-          </Routes>
+      {user ? (
+          <div
+          style={{
+          fontSize: '20px'
+          }}>
+            <NavBar user={user} setUser={setUser} setProfile={setProfile} />
+            {profile ? (
+              <Routes>
+                <Route path="/gamepage" element={<Game profile={profile} />} />
+                <Route
+                  path="/profilepage"
+                  element={<ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate} />}
+                />
+                <Route path="/homepage" 
+                element={<HomePage profile={profile} setProfile={setProfile} size={size} />} />
+              </Routes>
+            ) : (
+              <ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate}/>
+            )}
+          </div>
         ) : (
-          <ProfilePage profile={profile} handleProfileUpdate={handleProfileUpdate}/>
+          <AuthPage setUser={setUser} />
         )}
-      </div>
-    ) : (
-      <AuthPage setUser={setUser} />
-    )}
   </main>
   );
 }

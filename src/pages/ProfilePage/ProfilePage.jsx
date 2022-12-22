@@ -8,8 +8,6 @@ let navigate = useNavigate()
   
   return (
   <>
-  
-  <br/>
   <ProfileForm 
   profile={profile} 
   handleProfileUpdate={handleProfileUpdate}

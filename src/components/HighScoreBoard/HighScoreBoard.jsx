@@ -21,7 +21,11 @@ export default function HighScoreBoard() {
   return (
     <div className="highScore">
     <h3>All Time High Scores</h3>
+    <div style={{
+      textAlign:'left'
+    }}>
     {scoreListItem}
+    </div>
     </div>
   )
 }

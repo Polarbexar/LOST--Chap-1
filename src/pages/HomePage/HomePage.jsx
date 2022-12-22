@@ -1,9 +1,7 @@
 import {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import HighScoreBoard from '../../components/HighScoreBoard/HighScoreBoard';
-import HomeSprite from '../../components/HomeSprite/HomeSprite'
-import './HomePage.css'
 import PersonalScoreBoard from '../../components/PersonalScoreBoard/PersonalScoreBoard';
+import './HomePage.css'
 
 export default function HomePage({profile, size, setProfile}) {
   const [xPos, setXPos] = useState(window.innerWidth / 2);

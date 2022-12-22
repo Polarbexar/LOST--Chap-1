@@ -1,0 +1,25 @@
+.formDiv{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.formDiv > input {
+  margin-left: 50px;
+  width: 20%;
+}
+
+.loginInput1 > input {
+  margin-left: 80px 
+}
+.loginInput2 > input {
+  margin-left: 25px 
+}
+
+.loginBtn {
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 10%
+}

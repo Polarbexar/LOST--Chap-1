@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { useNavigate } from 'react-router-dom'
 import './ProfileForm.css'
 import * as usersAPI from '../../utilities/users-api'
 import * as profileAPI from '../../utilities/profile-api'
@@ -53,14 +52,14 @@ export default class ProfileForm extends Component {
             value='./assets/bigBrownBird.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/bigBrownBird.gif" width="200px" height='200px' alt="" />
+            src="./assets/bigBrownBird.gif" width="100px" height='100px' alt="" />
           <input 
             className='CharButton'
             type='image'
             value='./assets/whiteBird.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/whiteBird.gif" width="300px" height='200px' alt="" 
+            src="./assets/whiteBird.gif" width="100px" height='100px' alt="" 
             />
           <input
             className='CharButton'
@@ -68,7 +67,7 @@ export default class ProfileForm extends Component {
             value='./assets/redBird.webp' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/redBird.webp" width="200px" height='200px'alt="" />
+            src="./assets/redBird.webp" width="100px" height='100px'alt="" />
             
           <input
             className='CharButton'
@@ -76,7 +75,7 @@ export default class ProfileForm extends Component {
             value='./assets/blueBird.gif' 
             name='avatar'
             onClick={this.handleChange}
-            src="./assets/blueBird.gif" width="300px" height='200px'alt="" />
+            src="./assets/blueBird.gif" width="100px" height='100px'alt="" />
           <button type='submit' onClick={this.handleUpdateSubmit}>submit</button>
         </form>
       </div>

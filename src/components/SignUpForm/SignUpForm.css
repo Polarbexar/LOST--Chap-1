@@ -1,0 +1,27 @@
+.formDiv{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.formDiv > input {
+  width: 20%;
+  margin-top: 10px;
+}
+
+.specialInputs2 {
+  margin-right: 68px;
+}
+
+.specialInputs3 {
+  margin-right: 45px; 
+}
+
+.formBtn {
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 40px;
+  width: 10%
+}

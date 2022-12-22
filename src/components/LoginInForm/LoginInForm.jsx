@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate} from 'react-router-dom'
 import * as usersService from '../../utilities/users-service';
+import './LoginInForm.css'
 
 export default function LoginForm({ setUser }) {
   const [credentials, setCredentials] = useState({
@@ -34,11 +35,15 @@ export default function LoginForm({ setUser }) {
     <div>
       <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
+          <div className="formDiv loginInput1">
           <label>Email</label>
           <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
+          </div>
+          <div className="formDiv loginInput2">
           <label>Password</label>
           <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
+          </div>
+          <button className="loginBtn" type="submit">LOG IN</button>
         </form>
       </div>
       <p className="error-message">&nbsp;{error}</p>

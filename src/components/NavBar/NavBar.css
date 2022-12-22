@@ -1,0 +1,14 @@
+nav > a {
+  text-decoration: none;
+  font-size: 30px;
+  padding-top: 10px;
+  color: white;
+  margin: 15px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
