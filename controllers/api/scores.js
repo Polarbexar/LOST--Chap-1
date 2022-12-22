@@ -38,6 +38,7 @@ async function deleteScores(req, res) {
   const profile = await Profile.updateOne(
     {user: req.user._id},
     {$set: {scores: []}});
+    console.log(profile)
     const updatedProfile = await Profile.findOne({user: req.user._id})
     console.log(profile);
     res.json(updatedProfile)

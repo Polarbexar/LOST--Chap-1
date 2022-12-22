@@ -1,8 +1,10 @@
 .profileForm {
-  background: url(https://imgur.com/GILPXVI.png) no-repeat center center;
-  height: 100vh;
+  background: url(https://imgur.com/jpbvSWh.png) no-repeat center center;
+  height: 90vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .Profile-Pic:active {
@@ -38,4 +40,10 @@ button:focus {
 button:active{
   border: 10px black;
   background-color: yellow;
+}
+.secondForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

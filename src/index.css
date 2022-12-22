@@ -1,6 +1,7 @@
 .App {
   background-image: url(https://imgur.com/TXaN7g4.png);
   height: 100vh;
+  font-family: 'Caveat Brush';
 }
 
 .form-container {
@@ -29,3 +30,11 @@ input {
 input:focus {
   border-color: var(--orange); 
 } 
+
+button {
+  font-family: 'Caveat Brush';
+  font-size: 20px;
+  border: 5px solid black
+  }
+  
+

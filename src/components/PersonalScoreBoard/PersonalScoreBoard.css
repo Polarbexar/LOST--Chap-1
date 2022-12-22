@@ -1,6 +1,17 @@
 .personalScore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
   color: white;
   background-color: rgba(51, 51, 51, 1);
   border: 10px solid tan;
+  height: 100%;
+  font-family: 'Rubik Marker Hatch';
+  font-size: 30px;
+}
 
+.reset {
+  font-family: 'Rubik Marker Hatch';
 }

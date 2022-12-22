@@ -4,7 +4,6 @@ import PersonalScoreListItem from '../PersonalScoreListItem/PersonalScoreListIte
 import './PersonalScoreBoard.css'
 
 export default function PersonalScoreBoard({profile, setProfile}) {
-  console.log(profile)
   const [scores, setScores] = useState([])
   const scoreListItem = scores.map((s, idx) => (
     <PersonalScoreListItem profile={s} key={idx} />
@@ -12,15 +11,14 @@ export default function PersonalScoreBoard({profile, setProfile}) {
   useEffect(() => {
     async function fetchScores() {
       const scores = await scoresAPI.getUserScores();
-      console.log(scores)
       setScores(scores);
     }
     fetchScores();
   }, [profile]);
 
   async function handleSubmit() {
+    console.log('clicked')
     const deleteScores = await scoresAPI.deleteScores()
-    console.log(deleteScores)
     setProfile(deleteScores)
   }
 
@@ -29,7 +27,7 @@ export default function PersonalScoreBoard({profile, setProfile}) {
   <div className="personalScore">
   <h3>Your High Scores</h3>
   {scoreListItem}
-  <button className="reset" onClick={handleSubmit}>Delete Score History</button>
+  <button className="reset" type="submit" onClick={handleSubmit}>Delete Score History</button>
   </div>
     </>
   )

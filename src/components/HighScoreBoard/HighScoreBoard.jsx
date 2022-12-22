@@ -12,7 +12,6 @@ export default function HighScoreBoard() {
   useEffect(() => {
     async function fetchScores() {
       const scores = await scoresAPI.getHighScores();
-      console.log(scores)
       setScores(scores);
     }
     fetchScores();
