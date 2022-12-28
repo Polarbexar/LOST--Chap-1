@@ -5,9 +5,9 @@
 
 If storks can deliver babies, then why not Taco Bell food.
 
-Taco Bell is holding try outs for this new position. You do not need to be a carrier pigeon. All birds are welcome.
+Taco Bell is holding try outs for this new position. You do not need to be a stork or carrier pigeon. All birds are welcome.
 
-On the Game Page, click your mouse to start the game and then click to counteract gravity and avoid the obstacles!.
+On the Game Page, click your mouse to start the game and then click to counteract gravity and avoid the obstacles!
 
 
 ### Screenshots:
@@ -20,7 +20,7 @@ On the Game Page, click your mouse to start the game and then click to counterac
 Also lots of credit to my instructor at General Assembly:
 * Stephanie Lee
 
-This app is dedicated to Stephanie, Frank who consistenly pushed and checked on me, and all of pod 2!
+This app is dedicated to Stephanie, Frank who consistently pushed and checked on me, and all of pod 2!
 
 
 ### Coming Soon
@@ -29,7 +29,7 @@ This app is dedicated to Stephanie, Frank who consistenly pushed and checked on 
 * More buttons and CSS!
 
 # Play It!
-How bad do you want to work at Taco Bell? See it you want it more then the other birds! 
+How bad do you want to work at Taco Bell? See if you want it more than the other birds! 
 [Play it here!](https://lost-the-taco-bell-files.herokuapp.com/)
 
 This game was made using 
